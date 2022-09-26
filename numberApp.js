@@ -38,12 +38,23 @@ for(let num of fourNums){
         axios.get(`${BASE_URL}/${num}?json`)
     );
 }
-console.log(promises)
-Promise.all(promises)
-    .then(dataArr => {
-        dataArr.forEach(item => console.log(item.data.text))
+
+async function asyncAll(){
+    let allRes = await Promise.all(promises);
+    allRes.forEach(data => {
+        console.log(data.data.text);
     })
-    .catch(err => console.log(err))
+}
+
+// let promises = [];
+// let fourNums = [1, 2, 3, 4];
+
+// console.log(promises)
+// Promise.all(promises)
+//     .then(dataArr => {
+//         dataArr.forEach(item => console.log(item.data.text))
+//     })
+//     .catch(err => console.log(err))
 
 
 
